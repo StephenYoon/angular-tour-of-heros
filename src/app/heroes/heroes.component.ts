@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -11,15 +12,22 @@ export class HeroesComponent implements OnInit {
 
   selectedHero: Hero;
   
+  heroes: Hero[];
+
+  // NOTE: The constructor parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.getHeroes();
+  }
+  
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
 
-  heroes = HEROES;
-
-  constructor() { }
-
-  ngOnInit() {
+  getHeroes(): void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
   }
-
+  
 }
