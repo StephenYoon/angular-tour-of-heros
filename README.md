@@ -14,6 +14,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+If building for IIS into a subfolder other than the root of `c:\inetpub\wwwroot`, Run `ng build --base-href "/<your-sub-folder>/" --prod`
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
